@@ -25,7 +25,18 @@ def parse_size(size):
     if not match or not any(match.groups()):
         raise exceptions.InvalidSizeError(
             "'%s' is not a valid size string." % size)
-    return map(lambda x: 0 if not x else int(x), match.groups())
+    result =  map(lambda x: 0 if not x else int(x), match.groups())
+    #проверка на то, есть ли в списке такой размер
+
+    ALLOW_THUMB_SIZES = getattr(settings, "ALLOW_THUMB_SIZES", None)
+
+    for size in result:
+        if not (size in ALLOW_THUMB_SIZES):
+            raise exceptions.InvalidSizeError(
+                "'%s' is not a allowed size." % size)
+
+
+    return result
 
 
 def parse_method(method):
