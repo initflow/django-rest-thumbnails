@@ -1,6 +1,7 @@
+from importlib import import_module
+
 from django.conf import settings
 from django.core.files.storage import get_storage_class
-from django.utils.importlib import import_module
 
 import os
 

@@ -1,12 +1,10 @@
-from django.utils.log import getLogger
+
 
 from restthumbnails import processors, exceptions
 from restthumbnails.base import ThumbnailBase
 
 import os
 
-
-logger = getLogger(__name__)
 
 
 class ThumbnailFileBase(ThumbnailBase):
