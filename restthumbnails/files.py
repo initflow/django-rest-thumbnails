@@ -63,7 +63,11 @@ class ThumbnailFile(ThumbnailFileBase):
 
     @property
     def url(self):
-        return self.storage.url(self.name)
+        try:
+            return self.storage.url('..'+self.name)
+        except:
+            return self.storage.url(self.name)
+
 
     def generate(self):
         if self._source_exists():
